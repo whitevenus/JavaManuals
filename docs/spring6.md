@@ -24,4 +24,26 @@ Spring是一个主流的JavaEE`轻量级`、`开源`框架，其目的是用于`
 - **一站式**：Spring旗下的项目覆盖领域非常广泛，很多功能需求都可以在Spring Framework的基础上配合Spring其他模块实现。
 
 ## 1.4 Spring 模块组成
-[Spring模块组成1](./images/spring6/1.png)
+![Spring模块组成1](../images/spring6/Spring模块组成1.png)
+![Spring模块组成2](../images/spring6/Spring模块组成2.png)
+
+1. **Core Container**：Spring Core提供了IOC、DI、Bean配置装载创建的核心实现。核心概念：Beans、BeanFactory、BeanDefinitions、ApplicationContext。
+    - Spring-core：IOC和DI的基本实现
+    - Spring-beans: BeanFactory和Bean的装配管理。
+    - Spring-context：Spring context上下文，即IOC容器（AppliactionContext）
+    - Spring-expression：Spring表达式语言
+
+2. **Spring AOP**：
+    - Spring-aop：面向切面编程的应用模块，整合ASM、CGLib、
+    - Spring-aspects
+
+3. **Spring Data Access**：
+
+4. **Spring Web**：
+
+5. **Spring Message**：
+    - Spring-messaging：spring4.0提供的，为Spring集成一些基础的报文传送服务。
+
+6. **Spring test**：
+    - Spring-test：集成测试支持，主要是对junit的封装。
+
