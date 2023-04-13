@@ -1,0 +1,43 @@
+package com.mwt.maven;
+
+import org.junit.Test;
+
+// 静态导入的效果是将Assert类中的静态资源导入当前类
+// 这样一来，在当前类中就可以直接使用Assert类中的静态资源，不需要写类名
+// 比如后面的 assertEquals() 方法
+import static org.junit.Assert.*;
+
+
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import java.io.IOException;
+
+
+public class CalculatorTest {
+
+    // junit 4.x版本才可以使用注解的方式
+    @Test
+    public void testSum(){
+
+        // 1.创建Calculator对象
+        Calculator calculator = new Calculator();
+
+        // 2.调用Calculator对象的方法，获取到程序运行实际的结果
+        int actualResult = calculator.sum(5, 3);
+
+        // 3.声明一个变量，表示程序运行期待的结果
+        int expectedResult = 8;
+
+        // 4.使用断言来判断实际结果和期待结果是否一致
+        // 如果一致：测试通过，不会抛出异常
+        // 如果不一致：抛出异常，测试失败
+        assertEquals(expectedResult, actualResult);
+
+        // 为了证明测试过程执行了本程序，添加一行输出代码
+        System.out.println("Test method have been called !");
+
+    }
+}

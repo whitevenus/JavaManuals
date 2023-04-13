@@ -9,5 +9,5 @@
   - [Java基础](./docs/学习重点-Java基础.md)
   - [Java集合](./docs/b-2Java集合.md)
   - [Java多线程](./docs/b-3Java多线程.md)
-  - [Maven](./docs/maven.md)
+  - [Maven基础篇](./docs/maven基础篇.md)
   - [Spring6](./docs/spring6.md)
