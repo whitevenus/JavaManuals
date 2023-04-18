@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/bean-instantiation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bean-instantiation/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bena-lifecycle/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bena-lifecycle/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/circular-dependency/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/circular-dependency/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/factory-method/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/factory-method/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myspring-test/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myspring-test/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myspring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/myspring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/review-reflect/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/review-reflect/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-factory/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/simple-factory/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-first/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-first/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring6-first/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring6-first/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

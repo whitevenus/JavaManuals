@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 需要手动指定初始化方法和销毁方法 -->
+    <bean id="userBean" class="com.mwt.spring6.bean.User" init-method="init" destroy-method="destroyBean" scope="prototype">
+        <property name="name" value="张三"></property>
+    </bean>
+
+    <!-- 配置 bean 后置处理器 -->
+    <!-- 注意：这个 Bean 后置处理器将作用于整个配置文件中所有的 bean。-->
+    <bean id="logBean" class="com.mwt.spring6.bean.LogBeanPostProcessor"></bean>
+
+</beans>

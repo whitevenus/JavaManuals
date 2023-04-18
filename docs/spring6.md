@@ -998,9 +998,7 @@ private UserDao userDao;
     }
     ```
 
-## 3 手写 IoC（原理）
-
-### 3.1 回顾 Java 反射机制
+### 12. 回顾 Java 反射机制
 
 Java 反射机制主要实现**动态获取信息以及动态调用对象方法**的功能。更具体地说是指在运行状态时，对于任意一个类，我们都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性。
 
@@ -1010,7 +1008,8 @@ Java 反射机制主要实现**动态获取信息以及动态调用对象方法*
     - 通过`类名.Class`属性获取
     - 通过`对象名.getClass()`方法获取
     - 通过`Class.forName("全路径")`获取
-    - 实例化：通过`Class对象.getDeclaredConstructor().newInstance()`方法进行实例化
+
+- 实例化：通过`Class对象.getDeclaredConstructor().newInstance()`方法进行实例化
 
 - 获取构造方法
     - 通过`Class对象名.getConstructors()`方法**仅能**得到所有`public`的构造方法。
@@ -1025,7 +1024,7 @@ Java 反射机制主要实现**动态获取信息以及动态调用对象方法*
 - 获取方法
     - 通过`Class对象名.getMethods()`方法获取所有`public`方法
     - 通过`Class对象名.getDecalaredMethods()`方法获取所有方法（包含`private`方法）
-    - 通过`获取到的方法.invoke(对象)`执行所获取到的方法。**执行私有方法之前需要先通过`setAccesible(true)`方法允许访问。
+    - 通过`获取到的方法.invoke(对象)`执行所获取到的方法。**执行私有方法之前需要先通过`setAccesible(true)`方法允许访问**。
 
 ### 3.2 实现 Spring中的 IoC
 

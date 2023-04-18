@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 通过简单工厂模式实例化 bean：需要在Spring配置文件中告诉Spring框架，调用哪个类的哪个方法获取bean-->
+    <!-- factory-method 这个属性指定的是工厂类当中的静态方法，也就是告诉Spring框架，调用这个方法可以获取 bean-->
+    <bean id="starBean" class="com.mwt.spring6.bean.StarFactory" factory-method="get"></bean>
+
+
+    <!-- 通过工厂方法模式实例化：通过 factory-bean 属性 + factory-method 属性共同完成。-->
+    <!-- 告诉Spring框架，调用哪个对象的哪个方法获取 bean-->
+    <bean id="gunFactory" class="com.mwt.spring6.bean.GunFactory"></bean>
+    <bean id="gunBean" factory-bean="gunFactory" factory-method="get"></bean>
+
+
+    <!-- 通过实现FactoryBean接口实例化：这种方式实际上是第三种方式的简化 -->
+    <bean id="personBean" class="com.mwt.spring6.bean.PersonFactoryBean"></bean>
+
+</beans>

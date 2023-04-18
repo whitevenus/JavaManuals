@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="h" scope="singleton" class="com.mwt.spring6.bean.Husband">
+        <constructor-arg index="0" value="张三"></constructor-arg>
+        <constructor-arg index="1" ref="w"></constructor-arg>
+    </bean>
+
+    <bean id="w" scope="singleton" class="com.mwt.spring6.bean.Wife">
+        <constructor-arg name="name" value="小花"></constructor-arg>
+        <constructor-arg name="husband" ref="h"></constructor-arg>
+    </bean>
+</beans>

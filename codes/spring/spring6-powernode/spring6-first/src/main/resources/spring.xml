@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 这就是Spring的配置文件 -->
+    <!-- 这个文件最好放在类路径夏，方便后期的移植 -->
+    <!-- 放在resources根目录下，就相当于是放到了类的跟路径下。-->
+
+    <!--
+        bean标签的两个重要属性：
+            id：是这个bean的身份证号，不能重复，是唯一的标识。
+            class：必须填写类的全路径（带包名的类名）
+    -->
+    <bean id="userBean" class="com.mwt.spring6.bean.User">
+        <constructor-arg value="二班"></constructor-arg>
+        <constructor-arg value="张三"></constructor-arg>
+    </bean>
+
+<!--    <bean id="userBean" class="com.mwt.spring6.bean.Vip"/>-->
+
+    <bean id="userDao" class="com.mwt.spring6.dao.UserDaoImpl" />
+
+    <bean id="nowTime" class="java.util.Date"></bean>
+</beans>
