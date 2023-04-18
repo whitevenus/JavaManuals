@@ -848,16 +848,20 @@ Spring为Bean提供了多种实例化方式，通常包括 4 种方式。（也�
 
 从 Java 5 开始，Java 增加了对注解（Annotation）的支持，它是代码中的一种**特殊标记**，可以在`编译`、`类加载`和`运行`时被读取，执行相应的处理。开发人员可以通过注解在不改变原有代码和逻辑的情况下，在源代码中嵌入补充信息。
 
-Spring 从 2.5 版本开始提供了对注解技术的全面支持，我们可以使用注解来实现**自动装配**，简化 Spring 的 XML 配置。
+- 元注解`@Target`：用来修饰注解可以出现的位置。
+- 元注解`@Retention`：用来修饰注解可以被读取的时机。
+
+
+Spring 从 2.5 版本开始提供了对注解技术的全面支持，我们可以使用注解来实现**自动装配**，简化 Spring 的 XML 配置。并且 **Spring 倡导全注解开发**。
 
 Spring 通过注解实现自动装配的步骤如下：
 
-1. 引入 Spring 相关依赖
-2. 开启组件扫描
+1. 引入 spring-aop 依赖（引入 spring-context 会自动引入）
+2. **开启组件扫描**
 3. 使用注解定义 Bean
 4. 依赖注入
 
-#### 2.3.1 开启组件扫描
+#### 1. 开启组件扫描
 
 Spring 默认不使用注解装配 Bean，因此我们需要在 Spring 的 XML 配置中，通过 `<context:component-scan>` 元素开启 Spring Beans 的**自动扫描**功能。开启此功能后，Spring 会自动从扫描指定的包（**base-package 属性设置**）及其子包下的所有类，如果类、方法、属性上使用了 `@Component` 注解，就将该类、方法、属性装配到容器中。
 
@@ -873,6 +877,7 @@ Spring 默认不使用注解装配 Bean，因此我们需要在 Spring 的 XML �
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 开启组件扫描（默认扫描指定包下所有类） -->
+    <!-- 多个包使用逗号隔开 -->
     <context:component-scan base-package="com.mwt"></context:component-scan>
     
 
@@ -904,25 +909,30 @@ Spring 默认不使用注解装配 Bean，因此我们需要在 Spring 的 XML �
 </beans>
 ```
 
-#### 2.3.2 使用注解定义Bean
+#### 2. 声明 Bean 的注解
 
 Spring 提供了以下多个注解，这些注解可以直接标注在 Java 类上，将它们定义成 Spring Bean。
 
 | 注解        | 说明                                                         |
 | ----------- | ------------------------------------------------------------ |
 | @Component  | 该注解用于描述 Spring 中的 Bean，它是一个泛化的概念，仅仅表示容器中的一个组件（Bean），并且可以作用在应用的任何层次，例如 Service 层、Dao 层等。  使用时只需将该注解标注在相应类上即可。 |
-| @Repository | 该注解用于将数据访问层（Dao 层）的类标识为 Spring 中的 Bean，其功能与 @Component 相同。 |
-| @Service    | 该注解通常作用在业务层（Service 层），用于将业务层的类标识为 Spring 中的 Bean，其功能与 @Component 相同。 |
-| @Controller | 该注解通常作用在控制层（如SpringMVC 的 Controller），用于将控制层的类标识为 Spring 中的 Bean，其功能与 @Component 相同。 |
+| @Repository | 该注解用于将数据访问层（Dao 层）的类标识为 Spring 中的 Bean，是 @Component 注解的别名。 |
+| @Service    | 该注解通常作用在业务层（Service 层），用于将业务层的类标识为 Spring 中的 Bean，是 @Component 注解的别名。 |
+| @Controller | 该注解通常作用在控制层（如SpringMVC 的 Controller），用于将控制层的类标识为 Spring 中的 Bean，是 @Component 注解的别名。 |
 
 
-#### 2.3.3 依赖注入——`@Autowired`注入以及`@Qualifier`注解
+#### 3. 依赖注入——`@Value`注入
+当属性的类型是简单类型时，可以使用@Value注解进行注入。
+
+@Value注解可以出现在**属性上**、**setter方法上**、以及**构造方法的形参上**。
+
+#### 4. 依赖注入——`@Autowired`注入以及`@Qualifier`注解
 
 单独使用@Autowired注解，**默认根据类型装配**，也就是`byType`。
 
 - 该注解可以标注在哪里？
     - **构造方法上**
-    - **set方法上**
+    - **setter方法上**
     - **形参上**
     - **属性上**
     - **注解上**
@@ -940,7 +950,7 @@ Spring 提供了以下多个注解，这些注解可以直接标注在 Java 类�
 private UserDao userDao;
 ```
 
-#### 2.3.4 依赖注入——`@Resource`注入
+#### 5. 依赖注入——`@Resource`注入
 
 - @Resource注解是 JDK 扩展包中的，也就是说属于 JDK 的一部分。所以该注解是**标准注解**，更加具有通用性。(`JSR-250`标准中制定的注解类型。JSR是Java规范提案。)
 - @Autowired 注解是 Spring 框架自己的。
@@ -959,7 +969,7 @@ private UserDao userDao;
     ```
 
 
-#### 2.3.5 Spring 全注解开发
+#### 6. Spring 全注解开发
 
 全注解开发就是不再使用 spring 配置文件了，写一个`配置类`来代替配置文件。
 
@@ -970,32 +980,16 @@ private UserDao userDao;
     import org.springframework.context.annotation.ComponentScan;
     import org.springframework.context.annotation.Configuration;
 
-    @Configuration      // 配置类
+    @Configuration  // 配置类
     @ComponentScan("com.mwt.spring6")   // 开启组件扫描
     public class SpringConfig {
         
     }
     ```
-- 测试类通过加载配置类加载IoC容器
+- 通过加载配置类加载 IoC 容器
     ```java
-    import com.mwt.spring6.config.SpringConfig;
-    import com.mwt.spring6.resource.controller.MyUserController;
-    import org.springframework.context.ApplicationContext;
-    import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-    public class TestUserControllerAnnotation {
-
-        public static void main(String[] args) {
-
-            // 从配置类加载IoC容器
-            ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-
-            MyUserController bean = context.getBean(MyUserController.class);
-
-            bean.add();
-
-        }
-    }
+    // 从配置类加载IoC容器
+    ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
     ```
 
 ### 12. 回顾 Java 反射机制
@@ -1026,9 +1020,11 @@ Java 反射机制主要实现**动态获取信息以及动态调用对象方法*
     - 通过`Class对象名.getDecalaredMethods()`方法获取所有方法（包含`private`方法）
     - 通过`获取到的方法.invoke(对象)`执行所获取到的方法。**执行私有方法之前需要先通过`setAccesible(true)`方法允许访问**。
 
-### 3.2 实现 Spring中的 IoC
+### 13. 实现 Spring 中的 IoC 基于 set 的注入
 
-- 见[代码仓库]((https://github.com/whitevenus/JavaManuals))中的具体代码
+- 见[代码仓库](https://github.com/whitevenus/JavaManuals/tree/main/codes/spring/spring6-powernode/myspring/src/main/java/org/myspringframework/core)中的具体代码
+
+
 
 ## 4 AOP
 
